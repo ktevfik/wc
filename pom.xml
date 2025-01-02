@@ -54,7 +54,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>com.example.Application</mainClass>
+                            <mainClass>com.asparagus.Application</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
