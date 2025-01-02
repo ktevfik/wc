@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <shutdownHook class="ch.qos.logback.core.hook.DelayingShutdownHook"/>
+
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+    <include resource="org/springframework/boot/logging/logback/console-appender.xml"/>
+
+    <springProperty scope="context" name="APP_NAME" source="spring.application.name"/>
+
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+            <providers>
+                <timestamp/>
+                <version/>
+                <pattern>
+                    <pattern>
+                    {
+                        "logtime": "%d{yyyy-MM-dd HH:mm:ss.SSS}",
+                        "appName": "${APP_NAME}",
+                        "level": "%level",
+                        "thread": "%thread",
+                        "message": "%message",
+                        "msg": {
+                            "src": "%logger",
+                            "txt": "%message"
+                        },
+                        "traceId": "%mdc{traceId}",
+                        "spanId": "%mdc{spanId}",
+                        "stackTrace": "%rEx{full}"
+                    }
+                    </pattern>
+                </pattern>
+            </providers>
+        </encoder>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="CONSOLE" />
+    </root>
+
+</configuration> 

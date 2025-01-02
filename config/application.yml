@@ -1,0 +1,24 @@
+spring:
+  main:
+    web-application-type: NONE
+    banner-mode: off
+    log-startup-info: false
+  application:
+    name: spring-boot-cli
+
+# Configure logging using external logback config file
+# logging:
+#   config: config/logback-spring.xml
+
+cli:
+  commands:
+    help: |
+      Available commands:
+      help     - Show this help message
+      version  - Show application version
+      -c file  - Count bytes in the specified file
+      -l file  - Count lines in the specified file
+      -w file  - Count words in the specified file
+      -m file  - Count characters in the specified file (Unicode aware)
+      file     - Show lines, words, and bytes count
+    version: 1.0.0 
